@@ -1,16 +1,40 @@
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, Paper, Radio, TextField, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import { RespuestaProps } from './abierta';
 
+export interface changeRespuestaDescripcion {
+    value_descripcion: string;
+    name_descripcion: string;
+    onChangeRespuestaDescripcion(e: React.ChangeEvent<any>): void;
+}
+export interface ChangeRespuestaImagen {
+    value_imagen: string;
+    name_imagen: string;
+    onChangeRespuestaImagen(e: React.ChangeEvent<any>): void;
+}
+export interface ChangeRespuestaValor {
+    value_valor: string;
+    name_valor: string;
+    onChangeRespuestaValor(e: React.ChangeEvent<any>): void;
+}
+export interface RespuestaValueProps {
+    indexPregunta: number;
+    indexrespuesta: number;
+    descripcionRespuesta: string;
+    onDelete(i: number): void
+    fieldRespuestaDescripcion: changeRespuestaDescripcion
+    fieldRespuestaImagen: ChangeRespuestaImagen,
+    fieldRespuestaValor: ChangeRespuestaValor
+}
 const SelecionUnica = ({
     descripcionRespuesta,
     indexPregunta,
     indexrespuesta,
     onDelete,
     fieldRespuestaDescripcion,
-    fieldRespuestaImagen
-}: RespuestaProps) => {
+    fieldRespuestaImagen,
+    fieldRespuestaValor
+}: RespuestaValueProps) => {
     return (
         <Paper elevation={0} sx={{ p: 2, mb: 2, bgcolor: 'grey.200' }}>
             <Box sx={{ justifyContent: 'space-between', display: "flex", flexWrap: "wrap" }}>
@@ -33,6 +57,13 @@ const SelecionUnica = ({
                             name={fieldRespuestaDescripcion.name_descripcion}
                             value={fieldRespuestaDescripcion.value_descripcion}
                             onChange={(e) => { fieldRespuestaDescripcion.onChangeRespuestaDescripcion(e) }}
+                        />
+                        <Radio
+                            checked={fieldRespuestaValor.name_valor === '1'}
+                            onChange={fieldRespuestaValor.onChangeRespuestaValor}
+                            value={fieldRespuestaValor.name_valor}
+                            name="radio-buttons"
+                            inputProps={{ 'aria-label': '1' }}
                         />
                     </Box>
                 </Grid>

@@ -532,6 +532,11 @@ const Constructor = () => {
                                                                   onChangeRespuestaImagen: handleChange,
                                                                   value_imagen: respuestas[index].imagen
                                                                 }}
+                                                                fieldRespuestaValor={{
+                                                                  name_valor: `preguntas[${i}].respuestas[${index}].valor`,
+                                                                  onChangeRespuestaValor: handleChange,
+                                                                  value_valor: respuestas[index].valor
+                                                                }}
                                                               />
                                                             )
                                                           case 3:
